@@ -3,15 +3,19 @@ package com.example.kchandra.myapplication.backend;
 /**
  * The object model for the data we are sending through endpoints
  */
-public class MyBean {
+public class JokeModel {
 
-    private String myData;
+    public JokeModel(String joke) {
+        this.joke = joke;
+    }
+
+    private String joke;
 
     public String getData() {
-        return myData;
+        return joke;
     }
 
     public void setData(String data) {
-        myData = data;
+        joke = data;
     }
 }

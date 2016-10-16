@@ -6,7 +6,7 @@ public class Joker {
             "Instagram is just Twitter for people who go outside.",
     };
 
-    public String tellJoke(){
+    public static String tellJoke(){
         return JOKES[0];
     }
 }

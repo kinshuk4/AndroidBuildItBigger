@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,7 +14,7 @@ import com.k2udacity.androidjokedisplayer.JokeDisplayer;
 
 
 public class MainActivity extends ActionBarActivity {
-
+    private static String LOG_TAG = MainActivity.class.getSimpleName();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +44,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void tellJoke(View view) {
+        Log.d(LOG_TAG, "tellJoke()");
         new JokeAsyncActivityTask(this).execute();
     }
 
