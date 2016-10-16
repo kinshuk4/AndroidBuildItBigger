@@ -19,6 +19,7 @@ import javax.inject.Named;
 @Api(
         name = "jokerapi",
         version = "v1",
+        description = "This api tells a joke.",
         namespace = @ApiNamespace(
                 ownerDomain = "backend.myapplication.kchandra.example.com",
                 ownerName = "backend.myapplication.kchandra.example.com",

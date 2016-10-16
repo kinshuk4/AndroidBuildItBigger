@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.k2udacity.androidjokedisplayer.JokeDisplayer;
@@ -43,17 +44,23 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    ProgressBar mProgress = null;
+
     public void tellJoke(View view) {
         Log.d(LOG_TAG, "tellJoke()");
-        new JokeAsyncActivityTask(this).execute();
+        mProgress =(ProgressBar) findViewById(R.id.progress_bar);
+        new JokeAsyncActivityTask(this, mProgress).execute();
     }
 
     public class JokeAsyncActivityTask extends JokeAsyncTask {
 
         private Activity activity;
+        private ProgressBar progressBar;
+        public JokeAsyncActivityTask(Activity activity , ProgressBar progressBar) {
 
-        public JokeAsyncActivityTask(Activity activity) {
             this.activity = activity;
+            this.progressBar = progressBar;
+            progressBar.setVisibility(View.VISIBLE);
         }
 
         @Override
@@ -61,6 +68,7 @@ public class MainActivity extends ActionBarActivity {
             super.onPostExecute(s);
             if (s != null)
                 JokeDisplayer.startActvity(activity, s);
+            progressBar.setVisibility(View.GONE);
         }
     }
 

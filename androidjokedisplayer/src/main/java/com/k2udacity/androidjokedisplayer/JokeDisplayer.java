@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.TextView;
 
 import static com.k2udacity.androidjokedisplayer.Constants.EXTRAS_KEY_JOKE;
@@ -24,6 +25,7 @@ public class JokeDisplayer extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+//        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_joke_displayer);
         init();
@@ -38,6 +40,8 @@ public class JokeDisplayer extends AppCompatActivity {
             if (joke != null)
                 populateView(joke);
         }
+        //Use this code so that the dialog activity won't be closed when the user touches outside the dialog box:
+        this.setFinishOnTouchOutside(false);
     }
 
     private void populateView(String joke) {

@@ -26,7 +26,7 @@ public class JokeAsyncTask extends AsyncTask<Void, Void, String> {
         if (myApiService == null) {  // Only do this once
             Jokerapi.Builder builder = new Jokerapi.Builder(AndroidHttp.newCompatibleTransport(),
                     new AndroidJsonFactory(), null)
-                    .setRootUrl("http://192.168.0.104:8080/_ah/api/");
+                    .setRootUrl("https://infinite-mantis-146619.appspot.com/_ah/api/");
             myApiService = builder.build();
         }
 
