@@ -1,11 +1,15 @@
 package com.udacity.gradle.builditbigger;
 
+import android.app.Activity;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+
+import com.k2udacity.androidjokedisplayer.JokeDisplayer;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -15,7 +19,6 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -40,8 +43,23 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void tellJoke(View view) {
-        Toast.makeText(this, "derp", Toast.LENGTH_SHORT).show();
+        new JokeAsyncActivityTask(this).execute();
     }
 
+    public class JokeAsyncActivityTask extends JokeAsyncTask {
+
+        private Activity activity;
+
+        public JokeAsyncActivityTask(Activity activity) {
+            this.activity = activity;
+        }
+
+        @Override
+        protected void onPostExecute(@Nullable String s) {
+            super.onPostExecute(s);
+            if (s != null)
+                JokeDisplayer.startActvity(activity, s);
+        }
+    }
 
 }
