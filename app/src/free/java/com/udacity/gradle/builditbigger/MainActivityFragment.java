@@ -2,22 +2,27 @@ package com.udacity.gradle.builditbigger;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
 
 
 /**
  * A placeholder fragment containing a simple view.
  */
 public class MainActivityFragment extends Fragment {
+    private static String LOG_TAG = MainActivityFragment.class.getSimpleName();
 
     public MainActivityFragment() {
     }
 
+    InterstitialAd mInterstitialAd;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -32,6 +37,44 @@ public class MainActivityFragment extends Fragment {
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .build();
         mAdView.loadAd(adRequest);
+
+//        mInterstitialAd = new InterstitialAd(getContext());
+//        mInterstitialAd.setAdUnitId(getString(R.string.interstitial_test_ad_id));
+//
+//        mInterstitialAd.setAdListener(new AdListener() {
+//            @Override
+//            public void onAdClosed() {
+//                super.onAdClosed();
+//
+//                //pre-fetch the next ad
+//                reloadInterstitial();
+//            }
+//
+//            @Override
+//            public void onAdFailedToLoad(int errorCode) {
+//                super.onAdFailedToLoad(errorCode);
+//
+//                Log.w(LOG_TAG, "onAdFailedToLoad() failed, retrying.");
+//
+//                //pre-fetch the next ad
+//                reloadInterstitial();
+//
+//            }
+//
+//            @Override
+//            public void onAdLoaded() {
+//                super.onAdLoaded();
+//                Log.d(LOG_TAG, "onAdLoaded()");
+//            }
+//        });
         return root;
+    }
+
+    private void reloadInterstitial() {
+        Log.d(LOG_TAG, "reloadInterstitial(): Reloading interstitial ads.");
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .build();
+        mInterstitialAd.loadAd(adRequest);
     }
 }
