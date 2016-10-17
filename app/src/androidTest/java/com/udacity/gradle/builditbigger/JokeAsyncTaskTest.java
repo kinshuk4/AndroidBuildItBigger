@@ -13,9 +13,10 @@ public class JokeAsyncTaskTest extends AndroidTestCase {
 
     private static final String LOG_TAG = JokeAsyncTaskTest.class.getSimpleName();
 
-    public void testFetchesNonEmptyString() {
+    public void testFetchesNonEmptyString() throws InterruptedException {
         JokeAsyncTask jokeAsyncTask = new JokeAsyncTask();
         jokeAsyncTask.execute();
+        Thread.sleep(3000);
         try {
             String joke = jokeAsyncTask.get();
             Log.d(LOG_TAG, "Joke from task: " + joke);
