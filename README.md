@@ -17,7 +17,7 @@ The finished app consists of four modules:
 - An Android Library containing an activity for displaying jokes
 - An Android app that fetches jokes from the GCE module and passes them to the Android Library for display
 
-![Project Flow] (https://raw.githubusercontent.com/kinshuk4/AndroidXyzReader/master/screenshots/flow.png)
+![Project Flow] (https://raw.githubusercontent.com/kinshuk4/AndroidBuildItBigger/master/screenshots/flow.png)
 
 ## Why this Project
 
